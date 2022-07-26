@@ -1,0 +1,51 @@
+
+
+
+{% extends 'UserApp/base.html' %}
+{% block content %}
+
+
+<header style="color: blue;">
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <!-- Navbar content -->
+        <a class="btn btn-primary" href="{% url 'LogOut' %}">LogOut</a>
+
+
+
+
+<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{name}}
+    </a>
+  
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item"  href="{% url 'SignUp' %}">Create new account</a>
+      <a class="dropdown-item" href="{% url 'ChangedPassword' %}">ChangedPassword</a>
+      <a class="dropdown-item" href="{% url 'LogOut' %}">Logout</a>
+    </div>
+  </div>
+      </nav>
+ 
+</header>
+{% if messages %}
+{% for msg in messages %}
+<small {% if msg.tags %} class="{{msg.tags}}" {% endif %}>{{msg}}</small>
+{% endfor %}
+{% endif %}
+<h1 style="color: pink;">{{name}} Hi you can accesss this application for learning user authentication</h1>
+
+
+<a  class="btn btn-success" href="{% url 'SignUp' %}"><strong>SignUp</strong></a>
+<a  class="btn btn-warning" href="{% url 'ChangedPassword' %}"><strong>ChangedPassword</strong></a>
+
+
+
+   
+ 
+
+
+
+  {% endblock %}
+
+
+

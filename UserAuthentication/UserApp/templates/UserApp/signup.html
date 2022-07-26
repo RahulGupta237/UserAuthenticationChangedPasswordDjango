@@ -1,0 +1,47 @@
+
+{% extends 'UserApp/base.html' %}
+{% block content %}
+
+<div style="color: rgb(255, 0, 234);background-color: rgb(168, 181, 185);" class="container border p-4 rounded col-4 mt-4">
+    <div class="form-control">
+
+        <h4 class="text-center alert alert-info">Register</h4>
+
+     
+        <form action="" method="POST" class="px-4 py-3" novalidate>
+            {% csrf_token %}
+    
+            {% if forms.non_field_errors %}
+    
+            {% for error in forms.non_field_errors %}
+            <p class="err">{{error}}</p>
+            {% endfor %}
+            {% endif %}
+    
+        
+            <div class="form-group">
+
+            {% for fm in forms %}
+                {{fm.label_tag}} {{fm}} <br> <br>{{fm.errors|striptags}}
+            {% endfor %}
+            </div>
+        
+    
+            <button type="submit" class="btn btn-success">SignUp</button>
+
+            <a href="{% url 'LogIn' %}" class="btn btn-primary mt-4">Login</a>
+        </form>
+        {% if messages %}
+        {% for msg in messages %}
+        <small {% if msg.tags %} class="{{msg.tags}}" {% endif %}>{{msg}}</small>
+        {% endfor %}
+        {% endif %}
+
+
+    </div>
+  
+
+</div>
+
+
+{% endblock content %}
